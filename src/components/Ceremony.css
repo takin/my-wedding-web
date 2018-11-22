@@ -1,0 +1,59 @@
+.ceremony-container {
+  display: flex;
+  flex-direction: column;
+}
+.ceremony-page-title {
+  font-family: "Sacramento";
+  display: block;
+  position: relative;
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 25px;
+  font-weight: 300;
+}
+.card-main-container {
+  display: flex;
+  justify-content: space-between;
+  width: 900px;
+  max-width: 900px;
+}
+.card-container {
+  border: 2px solid rgba(250,250,250, .5);
+  padding: 20px;
+  border-radius: 4px;
+  width: 400px;
+  position: relative;
+  background: rgba(250,180,240,.3)
+}
+
+.card-title {
+  border-bottom: 1px solid rgba(250,250,250,.5);
+  padding: 20px 0;
+  margin: 0 20px;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Work Sans";
+  text-transform: uppercase;
+  text-align: center;
+}
+.card-body-container{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  line-height: 28px;
+}
+.card-time-container {
+  width: 45%;
+  text-align: center;
+}
+.card-date-container {
+  width: 45%;
+  text-align: center;
+}
+span.start-time, span.end-time {
+  display: block;
+}
+.card-item-body {
+  text-align: center;
+  margin: 40px 0;
+}

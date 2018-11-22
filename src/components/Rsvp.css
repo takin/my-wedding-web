@@ -1,0 +1,36 @@
+.rsvp-container {
+  display: flex;
+  flex-direction: column;
+}
+.rsvp-header{
+  font-family: "Sacramento";
+  font-size: 45px;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.rsvp-body {
+  text-align: center;
+}
+.rsvp-body > input, .rsvp-body > button {
+  border: none;
+  position: relative;
+  padding: 20px 10px;
+  font-size: 12px;
+  background: rgba(255,255,255,.8);
+}
+input#nama {
+  width: 200px;
+  border-radius: 5px 0 0 5px;
+}
+input#gelar {
+  width: 50px;
+  margin-right: 0;
+}
+.rsvp-body > button {
+  color: rgb(255,255,255);
+  background: rgba(241, 78, 149, 0.8);
+  border-radius: 0 5px 5px 0;
+  font-weight: bold;
+  padding-bottom: 21px;
+}
