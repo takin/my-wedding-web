@@ -1,7 +1,6 @@
 import React, { Component, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import Loading from './Loading';
-import 'firebase/database';
 import { TimelineLite, TimelineMax } from 'gsap/all';
 import './Home.css';
 
@@ -102,8 +101,8 @@ export default class Home extends Component {
   getData() {
     firebaseDB.ref('/').on('value', snapshots => {
       let mainDate = snapshots.child('event/0/date').val();
-      let suami = snapshots.child('suami/firstName').val();
-      let istri = snapshots.child('istri/firstName').val();
+      let suami = snapshots.child('couple/suami/firstName').val();
+      let istri = snapshots.child('couple/istri/firstName').val();
       this.setState({
         eventDate: new Date(mainDate).getTime(),
         suami,

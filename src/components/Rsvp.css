@@ -12,7 +12,7 @@
 .rsvp-body {
   text-align: center;
 }
-.rsvp-body > input, .rsvp-body > button {
+.form-container > input, .form-container > button {
   border: none;
   position: relative;
   padding: 20px 10px;
@@ -27,7 +27,7 @@ input#gelar {
   width: 50px;
   margin-right: 0;
 }
-.rsvp-body > button {
+.form-container > button {
   color: rgb(255,255,255);
   background: rgba(241, 78, 149, 0.8);
   border-radius: 0 5px 5px 0;
