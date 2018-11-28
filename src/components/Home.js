@@ -1,7 +1,11 @@
 import React, { Component, forwardRef } from 'react';
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
+import 'firebase/database';
 import { TimelineLite, TimelineMax } from 'gsap/all';
 import './Home.css';
+
+import { firebaseDB } from '../App'
 
 const Circle = forwardRef(({ number, text }, ref) => {
   return (
@@ -27,7 +31,6 @@ let dateCounter = (eventDate) => {
       }
     }
   }
-
   return {
     done: true,
     counter: {
@@ -37,7 +40,6 @@ let dateCounter = (eventDate) => {
       detik: today.getSeconds()
     }
   }
-
 }
 
 const Marriage = forwardRef(({ hasMarriage, event: { hari, jam, menit, detik } }, ref) => {
@@ -80,15 +82,14 @@ export default class Home extends Component {
     super(props);
     this.countdownElement = null;
     this.animationTimeout = null;
+    this.animationState = 0; // 0 = not started, 1 = started, 2 = completed
     this.tl = new TimelineLite();
-    let eventDate = new Date("December 12, 2018 08:00:00 GMT+07:00").getTime();
     this.state = {
       ready: false,
       suami: 'Syamsul',
       istri: 'Marlina',
-      ready: false,
       hasMarriage: false,
-      eventDate,
+      eventDate: null,
       counter: {
         hari: 0,
         jam: 0,
@@ -96,6 +97,19 @@ export default class Home extends Component {
         detik: 0
       }
     }
+  }
+
+  getData() {
+    firebaseDB.ref('/').on('value', snapshots => {
+      let mainDate = snapshots.child('event/0/date').val();
+      let suami = snapshots.child('suami/firstName').val();
+      let istri = snapshots.child('istri/firstName').val();
+      this.setState({
+        eventDate: new Date(mainDate).getTime(),
+        suami,
+        istri
+      })
+    })
   }
 
   componentWillUnmount() {
@@ -125,34 +139,35 @@ export default class Home extends Component {
           .to(circles[1], 1, { scale: 1 })
           .to(circles[2], 1, { scale: 1 }, "-=1")
           .to(circles[0], 1, { scale: 1 }, "-=.8")
-          .to(circles[3], 1, { scale: 1 }, "-=1")
+          .to(circles[3], 1, { scale: 1 }, "-=1");
+        this.animationState = 2;
       });
   }
 
   componentDidMount() {
+    this.getData();
     this.countdownElement = setInterval(_ => {
-      let { done, counter } = dateCounter(this.state.eventDate);
-      this.setState({
-        ready: true,
-        hasMarriage: done,
-        counter
-      })
+      if (this.state.eventDate !== null) {
+        let { done, counter } = dateCounter(this.state.eventDate);
+        this.setState({
+          ready: true,
+          hasMarriage: done,
+          counter
+        })
+      }
     }, 1000);
+  }
 
-    if (this.state.ready) {
-      console.log('ready');
+  componentDidUpdate() {
+    if (this.state.ready && this.animationState === 0) {
+      this.animationState = 1;
+      this.animate();
     }
-    // this.animationTimeout = setTimeout(_ => {
-    //   this.setState({
-    //     ready: true
-    //   })
-    // }, 1050)
-    // this.animate();
   }
 
   render() {
-    let { suami, istri, hasMarriage, counter } = this.state;
-    return (
+    let { ready, suami, istri, hasMarriage, counter } = this.state;
+    return ready ? (
       <div className="home-main-container" >
         <div className="home-header-container">
           <span className="suami header-item">{suami}</span>
@@ -161,6 +176,6 @@ export default class Home extends Component {
         </div>
         <Marriage event={counter} hasMarriage={hasMarriage} />
       </div>
-    );
+    ) : <Loading />;
   }
 }
