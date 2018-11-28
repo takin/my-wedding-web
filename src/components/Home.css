@@ -31,6 +31,10 @@
   height: 100px;
   border-radius: 50px;
 }
+.heart {
+  color: rgba(241, 78, 149, 0.8);
+  font-size: 8vw;
+}
 .circle-number {
   font-family: "Righteous";
   margin-bottom: 10px;
@@ -62,4 +66,27 @@
 .home-header-container > span, .body-text-container,.circle-item,.link-container {
   opacity: 0;
   position: relative;
+}
+@media (max-width: 376px) {
+  .home-header-container {
+    font-size: 12vw;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    padding:0;
+  }
+  .circle-container {
+    flex-direction: column;
+    width: 100px;
+  margin: auto;
+  }
+  .circle-item {
+    margin-bottom: 10px;
+  }
+  .body-text-container {
+    font-size: 4vw;
+    padding-bottom: 20px;
+  }
+  .link-container {
+    margin-bottom: 50px;
+  }
 }

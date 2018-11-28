@@ -28,6 +28,10 @@ export default class Menu extends Component {
         {
           name: 'RSVP',
           path: 'rsvp',
+        },
+        {
+          name: 'Location',
+          path: 'map',
         }
       ]
     }

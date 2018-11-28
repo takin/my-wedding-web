@@ -103,8 +103,10 @@ export default class Home extends Component {
       let mainDate = snapshots.child('event/0/date').val();
       let suami = snapshots.child('couple/suami/firstName').val();
       let istri = snapshots.child('couple/istri/firstName').val();
+      let eventDate = new Date(mainDate).getTime();
+      console.log(eventDate, mainDate, new Date(mainDate));
       this.setState({
-        eventDate: new Date(mainDate).getTime(),
+        eventDate,
         suami,
         istri
       })
@@ -170,7 +172,7 @@ export default class Home extends Component {
       <div className="home-main-container" >
         <div className="home-header-container">
           <span className="suami header-item">{suami}</span>
-          <span className="header-item"> & </span>
+          <span className="header-item heart"> ❤︎ </span>
           <span className="istri header-item">{istri}</span>
         </div>
         <Marriage event={counter} hasMarriage={hasMarriage} />

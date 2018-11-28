@@ -1,8 +1,80 @@
-.profile-image-container {
-  border-radius: 150px;
-  overflow: hidden;
+.profile-main-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  text-align: center;
 }
-.profile-image-container img {
-  width: 150px;
-  height: 150px;
+.profile-card-container {
+/*   border: 1px solid #f00; */
+  width: 45%;
+}
+.profile-text-header {
+  font-family: "Sacramento";
+  font-size: 2.3vw;
+  font-weight: bold;
+  color: rgba(241, 78, 149, 0.8);
+}
+.profile-header {
+  font-size: 5vw;
+  font-family: "Sacramento";
+  margin-bottom: 30px;
+}
+.suami, .istri, .profile-header, .couple-info {
+  position: relative;
+}
+.profile-container {
+/*     border: 1px solid #fff; */
+  display: flex;
+  width: 700px;
+  justify-content: space-evenly;
+  justify-items: center;
+  align-content: center;
+  flex-direction: row;
+  text-align: center;
+  margin: auto;
+}
+  .profile-image-container {
+    overflow: hidden;
+  }
+  .profile-image-container img {
+    border-radius: 12vw;
+    width: 12vw;
+    height: 12vw;
+    min-height: 100px;
+    min-width: 100px;
+    background: radial-gradient(farthest-corner at 40px 40px,
+    #f35 0%, #43e 100%);
+    padding: 5px;
+  }
+.couple-info {
+  margin-top: 50px;
+}
+
+@media (max-width: 375px) {
+  .profile-card-container {
+    margin-bottom: 40px;
+  }
+  .profile-header {
+    font-size: 11vw;
+    font-family: "Sacramento";
+    margin-bottom: 30px;
+    margin-top: 30px;
+  }
+  .profile-text-header {
+    font-size: 10vw;
+  }
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .profile-image-container img {
+    width: 30vw;
+    height: 30vw;
+    border-radius: 30vw;
+  }
+  .couple-info {
+    width:330px;
+    margin-top: 30px;
+  }
 }

@@ -8,6 +8,7 @@ import Gallery from './components/Gallery';
 import Rsvp from './components/Rsvp';
 import Menu from './components/Menu';
 import Ceremony from './components/Ceremony';
+import Maps from './components/Maps';
 import './App.css';
 
 const config = {
@@ -35,6 +36,7 @@ class App extends Component {
                 <Route path="/rsvp" component={Rsvp} />
                 <Route path="/ceremony" component={Ceremony} />
                 <Route path="/about" component={About} />
+                <Route path="/map" component={Maps} />
               </Switch>
             </div>
           </div>
