@@ -2,8 +2,6 @@ import React, { Component, forwardRef } from 'react';
 import { TimelineMax } from 'gsap/all';
 import './Ceremony.css';
 
-
-
 const Card = forwardRef((props, ref) => (
   <div ref={ref} className="card-container">
     <div className="card-title">{props.title}</div>

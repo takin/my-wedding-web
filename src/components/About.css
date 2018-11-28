@@ -1,0 +1,8 @@
+.profile-image-container {
+  border-radius: 150px;
+  overflow: hidden;
+}
+.profile-image-container img {
+  width: 150px;
+  height: 150px;
+}

@@ -83,6 +83,7 @@ export default class Home extends Component {
     this.tl = new TimelineLite();
     let eventDate = new Date("December 12, 2018 08:00:00 GMT+07:00").getTime();
     this.state = {
+      ready: false,
       suami: 'Syamsul',
       istri: 'Marlina',
       ready: false,
@@ -132,14 +133,21 @@ export default class Home extends Component {
     this.countdownElement = setInterval(_ => {
       let { done, counter } = dateCounter(this.state.eventDate);
       this.setState({
+        ready: true,
         hasMarriage: done,
         counter
       })
     }, 1000);
 
-    this.animationTimeout = setTimeout(_ => {
-      this.animate();
-    }, 1050)
+    if (this.state.ready) {
+      console.log('ready');
+    }
+    // this.animationTimeout = setTimeout(_ => {
+    //   this.setState({
+    //     ready: true
+    //   })
+    // }, 1050)
+    // this.animate();
   }
 
   render() {

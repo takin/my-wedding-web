@@ -16,6 +16,7 @@
 }
 .gallery-container {
   position: relative;
+  background: rgba(255,255,255,.8);
 }
 .gallery-title {
   font-family: "Sacramento";
@@ -35,8 +36,9 @@
   border-radius: 10px;
   overflow: hidden;
 }
-.image-gallery-slide {
-  background: transparent;
+.image-gallery-image, .image-gallery-slide {
+  background: rgba(255,255,255,.8);
+  border-radius: 10px;
 }
 .image-gallery-image img {
   object-fit: scale-down;
