@@ -12,25 +12,67 @@
 .rsvp-body {
   text-align: center;
 }
-.form-container > input, .form-container > button {
+input, button, textarea {
   border: none;
   position: relative;
-  padding: 20px 10px;
-  font-size: 12px;
-  background: rgba(255,255,255,.8);
 }
 input#nama {
-  width: 200px;
-  border-radius: 5px 0 0 5px;
+  width: 20vw;
+  font-size: 1vw;
+  border-radius: 5px 0 0 0;
 }
 input#gelar {
-  width: 50px;
+  width: 5vw;
+  font-size: 1vw;
   margin-right: 0;
+  border-radius: 0 5px 0 0;
 }
-.form-container > button {
+#nama,#gelar {
+  padding: 20px;
+}
+textarea {
+  width: 29.2vw;
+  height: 100px;
+  border-radius: 0 0 5px 5px;
+  padding: 10px;
+  font-size: 1vw;
+}
+button {
+  width: 30.6vw;
+  padding: 20px 0;
+  border-radius: 5px;
+  margin-top: 10px;
+  font-family: "KoHo";
+  font-weight: bold;
+  font-size: 1.3vw;
   color: rgb(255,255,255);
   background: rgba(241, 78, 149, 0.8);
-  border-radius: 0 5px 5px 0;
-  font-weight: bold;
-  padding-bottom: 21px;
+}
+.rejected-message {
+  height: 20px;
+  text-align: center;
+  color: red;
+  margin-top: 10px;
+}
+@media (max-width: 375px) {
+  .rsvp-header {
+    font-size: 9vw;
+  }
+  input#gelar, input#nama {
+    font-size: 3vw;
+  }
+  input#nama {
+    width: 195px;
+  }
+  input#gelar {
+    width: 55px;
+  }
+  textarea {
+    width: 310px;
+    font-size: 3vw;
+  }
+  button {
+    width: 332px;
+    font-size: 4vw;
+  }
 }

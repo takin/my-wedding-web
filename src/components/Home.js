@@ -44,7 +44,7 @@ let dateCounter = (eventDate) => {
 const Marriage = forwardRef(({ hasMarriage, event: { hari, jam, menit, detik } }, ref) => {
   if (hasMarriage) {
     return (
-      <div>
+      <div className="body-main-container">
         <div className="body-text-container header-item">Alhamdulillah Kami Sudah Menikah</div>
         <div className="circle-container">
           <Circle number={hari} text="Hari" />
@@ -102,7 +102,7 @@ export default class Home extends Component {
     firebaseDB.ref('/').on('value', snapshots => {
       let mainDate = snapshots.child('event/0/date').val();
       let suami = snapshots.child('couple/suami/firstName').val();
-      let istri = snapshots.child('couple/istri/firstName').val();
+      let istri = snapshots.child('couple/istri/lastName').val();
       let eventDate = new Date(mainDate).getTime();
       console.log(eventDate, mainDate, new Date(mainDate));
       this.setState({
@@ -128,7 +128,7 @@ export default class Home extends Component {
     let headers = document.getElementsByClassName('header-item');
     let linkButton = document.getElementsByClassName('link-container');
     this.tl
-      .staggerFromTo(headers, .5, { top: "-=60", opacity: 0 }, { top: 0, opacity: 1 }, 0.1)
+      .staggerFromTo(headers, 1, { top: "-=60", opacity: 0 }, { top: 0, opacity: 1 }, 0.1)
       .staggerFromTo(circles, 1, { top: "+=80", opacity: 0, rotationY: 360, scale: .5 }, { top: 0, rotationY: 0, opacity: 1, scale: 1 }, 0.3, "-=.8")
       .fromTo(linkButton, .6, { scale: 0, opacity: 0 }, { scale: 1, opacity: 1 }, "-=0.8")
       .eventCallback('onComplete', _ => {

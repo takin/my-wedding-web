@@ -1,10 +1,12 @@
 .home-main-container {
   display: flex;
+  align-content: center;
+  align-items: center;
   text-align: center;
   flex-direction: column;
 }
 .home-header-container {
-  font-size: 8.8vw;
+  font-size: 8.3vw;
   padding: 20px 0 80px 0;
   line-height: 50px;
   font-weight: 400;

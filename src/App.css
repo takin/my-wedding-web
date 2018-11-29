@@ -9,7 +9,7 @@
 
 .main-body-container {
   display: flex;
-  flex:1;
+  flex:1 1;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -20,4 +20,10 @@
   width: 920px;
   min-width: 900px;
   justify-content: space-around;
+}
+@media (max-width: 375px) {
+  .main-body-container > div {
+    width: 100%;
+    min-width: 100%;
+  }
 }

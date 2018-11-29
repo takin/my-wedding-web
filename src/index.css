@@ -21,9 +21,8 @@ body {
   max-width: 1100px;
   margin: 0 auto;
 }
-#root > div {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  height: 100%;
+@media (max-width:375px) {
+  #root {
+    height: auto;
+  }
 }
