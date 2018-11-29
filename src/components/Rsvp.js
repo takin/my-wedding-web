@@ -62,7 +62,7 @@ export default class Rsvp extends Component {
       delete data.submitted;
       this.animate(true).then(_ => {
         this.setState({ loading: true })
-        firebaseDB.ref('/undangan').push({ ...data }).then(snap => (
+        firebaseDB.ref('/undangan').push({ ...data, hadir: false }).then(snap => (
           this.setState({ loading: false, submitted: true })
         ))
       })
