@@ -1,3 +1,4 @@
+import { QRValidationURL } from './app.config';
 export const DateConverter = dateText => {
   let monthID = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'];
   let dayID = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum\'at', 'Sabtu'];
@@ -13,3 +14,5 @@ export const DateConverter = dateText => {
     }
   }
 }
+
+export const QRURLBuilder = key => `${QRValidationURL}?id=${key}`;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { TimelineLite } from 'gsap/all';
 import { firebaseDB } from '../App';
 import Loading from './Loading';
+import * as QRCode from 'qrcode.react';
+import { QRURLBuilder } from '../helpers';
 import './Rsvp.css';
 
 const Form = props => {
@@ -27,12 +29,28 @@ const Form = props => {
   )
 }
 
+const ShowQRCode = props => (
+  <div className="qr-main-container">
+    <div className="qr-header-container">
+      <h1>Terima Kasih</h1>
+      <p>
+        Sampai jumpa di hari bahagia Kami. Mohon tunjukkan QR Code berikut ini kepada bagian resepsionis
+        untuk di scan di lokasi acara untuk mengambil souvenir yang telah kami siapkan
+      </p>
+    </div>
+    <div className="qr-container">
+      <QRCode value={QRURLBuilder(props.url)} />
+    </div>
+  </div>
+);
+
 export default class Rsvp extends Component {
 
   constructor(props) {
     super(props);
     this.tl = new TimelineLite();
     this.state = {
+      QRurl: localStorage.getItem('qrurl') || null,
       message: null,
       loading: false,
       submitted: false,
@@ -62,9 +80,12 @@ export default class Rsvp extends Component {
       delete data.submitted;
       this.animate(true).then(_ => {
         this.setState({ loading: true })
-        firebaseDB.ref('/undangan').push({ ...data, hadir: false }).then(snap => (
-          this.setState({ loading: false, submitted: true })
-        ))
+        firebaseDB.ref('/undangan').push({ ...data, hadir: false })
+          .then(snap => {
+            localStorage.setItem('qrurl', snap.key);
+            this.setState({ loading: false, submitted: true, QRurl: snap.key });
+          })
+          .catch(e => console.log(e))
       })
     } else {
       this.setState({
@@ -108,14 +129,18 @@ export default class Rsvp extends Component {
   }
 
   render() {
-    let { submitted, loading } = this.state;
+    let { QRurl, loading } = this.state;
+
+    if (QRurl !== null) {
+      return <ShowQRCode url={QRurl} />
+    }
 
     return (
       <div className="rsvp-container">
         <div className="rsvp-header">Kindly Fill The Form</div>
         <div className="rsvp-body">
           {
-            loading ? <Loading /> : submitted ? <div>Terima Kasih, Sampai jumpa di hari bahagia Kami</div> : <Form changeHandler={this.handleChange.bind(this)} submitHandler={this.handleSubmit.bind(this)} />
+            loading ? <Loading /> : <Form changeHandler={this.handleChange.bind(this)} submitHandler={this.handleSubmit.bind(this)} />
           }
         </div>
         <div className="rejected-message">{this.state.message}</div>

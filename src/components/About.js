@@ -41,7 +41,7 @@ export default class About extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
     let profileHeader = document.getElementsByClassName('profile-header');
     let suami = document.getElementsByClassName('suami');
     let istri = document.getElementsByClassName('istri');
@@ -54,7 +54,7 @@ export default class About extends Component {
 
   componentWillMount() {
     document.title = document.title.replace(/\|.*/, '| About Us');
-    firebaseDB.ref('/couple').once('value').then(snapshot => {
+    firebaseDB.ref('/couple').on('value', snapshot => {
       let couple = snapshot.val();
       this.setState({
         ready: true,

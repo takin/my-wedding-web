@@ -1,6 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const config = require('../../src/app.config');
+const config = require('./config');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -15,14 +15,12 @@ const app = admin.initializeApp({
 })
 
 exports.validateqr = functions.https.onRequest((req, res) => {
-  if (req.method !== 'POST' ||
-    (req.method === 'POST' &&
-      (req.query === undefined || !req.query.hasOwnProperty('id') || req.query.id === ''))) {
+  if (req.query === undefined || !req.query.hasOwnProperty('id') || req.query.id === '') {
     return res.end('nothing to do here');
   }
 
   return app.database().ref(`/undangan/${req.query.id}`).update({ hadir: true }).then(val => {
-    return res.json({ success: true });
+    return res.end('Data berhasil di masukkan!');
   })
-    .catch(e => res.json({ success: false }));
+    .catch(e => res.end('Data Gagal di masukkan!'));
 });

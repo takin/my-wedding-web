@@ -54,10 +54,38 @@ button {
   color: red;
   margin-top: 10px;
 }
+.qr-main-container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.qr-container {
+  background: rgb(241, 78, 149);
+  padding: 13px 5px 10px 5px;
+  margin: auto;
+  border-radius: 10px;
+}
+.qr-main-container h1 {
+  line-height: 20px;
+  margin: 0;
+}
+.qr-main-container p {
+  max-width: 450px;
+  margin: 30px auto;
+}
 @media (max-width: 375px) {
   .rsvp-header {
     font-size: 9vw;
+    margin-top: 15px;
   }
+  .qr-main-container {
+    margin-top: 25px;
+  }
+  .qr-header-container p {
+    width: 300px;
+    margin: 30px auto;
+  }
+  
   input#gelar, input#nama {
     font-size: 3vw;
   }
