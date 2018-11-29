@@ -69,7 +69,7 @@
   opacity: 0;
   position: relative;
 }
-@media (max-width: 376px) {
+@media (max-width: 414px) {
   .home-header-container {
     font-size: 12vw;
     margin-top: 40px;

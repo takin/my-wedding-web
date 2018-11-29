@@ -26,14 +26,12 @@
   color: rgb(255,255,255);
   text-decoration: none;
 }
-@media (max-width: 375px) {
+@media (max-width: 414px) {
   .menu-main-container {
     flex-direction: column;
   }
   .menu-left-title-container {
     text-align: center;
-  }
-  .menu-list-container {
   }
   .menu-list-container ul {
     margin: 0;

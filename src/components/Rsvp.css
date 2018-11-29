@@ -81,7 +81,7 @@ button {
     width: 337px;
   }
 }
-@media (max-width: 375px) {
+@media (max-width: 414px) {
   .rsvp-header {
     font-size: 9vw;
     margin-top: 15px;

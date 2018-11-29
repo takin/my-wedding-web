@@ -57,7 +57,7 @@ span.start-time, span.end-time {
   text-align: center;
   margin: 40px 0;
 }
-@media (max-width: 375px) {
+@media (max-width: 414px) {
   .card-main-container {
     flex-direction: column;
     align-items: center;

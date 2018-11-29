@@ -11,7 +11,7 @@
   -webkit-animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
           animation: lds-heart 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
-@media(max-width: 375px) {
+@media(max-width: 414px) {
   .loading-container {
     margin-top:100px;
   }

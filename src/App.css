@@ -21,7 +21,7 @@
   min-width: 900px;
   justify-content: space-around;
 }
-@media (max-width: 375px) {
+@media (max-width: 414px) {
   .main-body-container > div {
     width: 100%;
     min-width: 100%;

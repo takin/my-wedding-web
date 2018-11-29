@@ -58,7 +58,7 @@
   text-align: right;
 }
 
-@media(max-width: 375px) {
+@media(max-width: 414px) {
   .gallery-title {
     font-size: 10vw;
     margin-top: 20px;

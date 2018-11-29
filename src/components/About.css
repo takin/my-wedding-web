@@ -50,7 +50,7 @@
   margin-top: 50px;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 414px) {
   .profile-card-container {
     margin-bottom: 40px;
     width:80%;

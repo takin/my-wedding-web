@@ -21,7 +21,7 @@ body {
   max-width: 1100px;
   margin: 0 auto;
 }
-@media (max-width:375px) {
+@media (max-width:414px) {
   #root {
     height: auto;
   }
