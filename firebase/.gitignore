@@ -64,3 +64,12 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+#ignore react build files
+*manifest.json
+index.html
+precache-*.js
+service-worker.js
+*.ico
+images
+static

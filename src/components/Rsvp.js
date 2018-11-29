@@ -80,7 +80,7 @@ export default class Rsvp extends Component {
       delete data.submitted;
       this.animate(true).then(_ => {
         this.setState({ loading: true })
-        firebaseDB.ref('/undangan').push({ ...data, hadir: false })
+        firebaseDB.ref('/undangan').push({ ...data, hadir: false, souvenir: "" })
           .then(snap => {
             localStorage.setItem('qrurl', snap.key);
             this.setState({ loading: false, submitted: true, QRurl: snap.key });
