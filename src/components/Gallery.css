@@ -16,7 +16,6 @@
 }
 .gallery-container {
   position: relative;
-  background: rgba(255,255,255,.8);
 }
 .gallery-title {
   font-family: "Sacramento";
@@ -36,8 +35,7 @@
   border-radius: 10px;
   overflow: hidden;
 }
-.image-gallery-image, .image-gallery-slide {
-  background: rgba(255,255,255,.8);
+.image-gallery-image, .image-gallery-slide, .bottom {
   border-radius: 10px;
 }
 .image-gallery-image img {
@@ -52,4 +50,20 @@
   left: 0;
   top: 0;
   z-index: 1;
+}
+.image-gallery-left-nav,.image-gallery-play-button {
+  text-align: left;
+}
+.image-gallery-right-nav,.image-gallery-fullscreen-button {
+  text-align: right;
+}
+
+@media(max-width: 375px) {
+  .gallery-title {
+    font-size: 10vw;
+    margin-top: 20px;
+  }
+  .image-gallery-image, .image-gallery-slide  {
+    border-radius: 0px;
+  }
 }

@@ -32,13 +32,13 @@ const Form = props => {
 const ShowQRCode = props => (
   <div className="qr-main-container">
     <div className="qr-header-container">
-      <h1>Terima Kasih</h1>
-      <p>
+      <h1 id="terima-kasih">Terima Kasih</h1>
+      <p id="keterangan-qr">
         Sampai jumpa di hari bahagia Kami. Mohon tunjukkan QR Code berikut ini kepada bagian resepsionis
         untuk di scan di lokasi acara untuk mengambil souvenir yang telah kami siapkan
       </p>
     </div>
-    <div className="qr-container">
+    <div id="qr-wrapper" className="qr-container">
       <QRCode value={QRURLBuilder(props.url)} />
     </div>
   </div>
@@ -108,6 +108,13 @@ export default class Rsvp extends Component {
     })
   }
 
+  animateQR() {
+    let header = document.getElementById('terima-kasih');
+    let text = document.getElementById('keterangan-qr');
+    let qr = document.getElementById('qr-wrapper');
+    this.tl.staggerFrom([header, text, qr], 1, { opacity: 0, scale: "-=.3" }, "-=.2")
+  }
+
   componentWillMount() {
     document.title = document.title.replace(/\|.*/, '| RSVP');
   }
@@ -126,6 +133,9 @@ export default class Rsvp extends Component {
 
   componentDidMount() {
     this.animate();
+    if (this.state.QRurl !== null) {
+      this.animateQR();
+    }
   }
 
   render() {

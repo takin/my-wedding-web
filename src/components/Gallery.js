@@ -16,29 +16,46 @@ export default class Gallery extends Component {
     }
   }
 
-  componentWillMount() {
-    document.title = document.title.replace(/\|.*/, '| Gallery');
+  getData() {
     firebaseDB.ref('/gallery').on('value', snapshots => {
       let images = snapshots.val();
       this.setState({ images, ready: true });
     })
   }
 
-  componentWillUnmount() {
-    this.tl.kill();
-  }
-  componentDidMount() {
+  animate() {
     let title = document.getElementsByClassName('gallery-title');
     let gallery = document.getElementsByClassName('gallery-container');
     this.tl.fromTo(title, 1, { opacity: 0, top: -50 }, { opacity: 1, top: 0 })
       .from(gallery, 1, { opacity: 1, top: 50 }, "-=1")
+  }
+
+  componentWillMount() {
+    document.title = document.title.replace(/\|.*/, '| Gallery');
+  }
+
+  componentWillUnmount() {
+    this.tl.kill();
+  }
+
+  componentDidUpdate() {
+    this.animate();
+  }
+
+  componentDidMount() {
+    this.getData();
   }
   render() {
     return this.state.ready ? (
       <div className="gallery-main-container">
         <div className="gallery-title">Our Wedding Gallery</div>
         <div className="gallery-container">
-          <ImageGallery showThumbnails={false} items={this.state.images} />
+          <ImageGallery
+            lazyLoad={true}
+            autoPlay={true}
+            showThumbnails={false}
+            items={this.state.images}
+          />
         </div>
       </div>
     ) : <Loading />

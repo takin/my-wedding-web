@@ -6,7 +6,6 @@ import { DateConverter } from '../helpers';
 import './Ceremony.css';
 
 const Card = forwardRef((props, ref) => {
-  console.log(props)
   return (
     <div ref={ref} className="card-container">
       <div className="card-title">{props.title}</div>
@@ -78,8 +77,11 @@ export default class Ceremony extends Component {
 
   componentDidUpdate() {
     if (this.state.ready) {
-      this.tm.fromTo(this.element.card.left, 1.3, { left: -100, opacity: 0 }, { left: 0, opacity: 1 })
-        .fromTo(this.element.card.right, 1.3, { left: 100, opacity: 0 }, { left: 0, opacity: 1 }, "-=1.3")
+      let screenWidth = document.body.scrollWidth;
+      let firstCardOption = screenWidth > 400 ? [{ left: -100, opacity: 0 }, { left: 0, opacity: 1 }] : [{ bottom: -100, opacity: 0 }, { bottom: 0, opacity: 1 }]
+      let secondCardOption = screenWidth > 400 ? [{ left: 100, opacity: 0 }, { left: 0, opacity: 1 }] : [{ bottom: 100, opacity: 0 }, { bottom: 0, opacity: 1 }]
+      this.tm.fromTo(this.element.card.left, 1.3, ...firstCardOption)
+        .fromTo(this.element.card.right, 1.3, ...secondCardOption, "-=1.3")
         .fromTo(this.element.pageTitle, 1.3, { top: -50, opacity: 0 }, { top: 0, opacity: 1 }, "-=1.3")
     }
   }
@@ -122,7 +124,6 @@ export default class Ceremony extends Component {
     });
   }
   render() {
-    console.log(this.state);
     let keys = Object.keys(this.state.items);
     return this.state.ready ? (
       <div className="ceremony-container" >

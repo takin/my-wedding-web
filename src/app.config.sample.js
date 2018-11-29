@@ -7,3 +7,5 @@ exports.firebaseConfig = {
   storageBucket: "<FIREBASE STORAGE BUCKET>",
   messagingSenderId: "<SENDER ID>"
 }
+
+exports.QRValidationURL = '<QR Validation URL>';

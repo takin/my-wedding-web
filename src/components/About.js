@@ -41,19 +41,7 @@ export default class About extends Component {
     }
   }
 
-  componentDidMount() {
-    let profileHeader = document.getElementsByClassName('profile-header');
-    let suami = document.getElementsByClassName('suami');
-    let istri = document.getElementsByClassName('istri');
-    let info = document.getElementsByClassName('couple-info');
-    this.tl.staggerFrom(suami, 1, { opacity: 0, left: "-=40" }, .2)
-      .staggerFrom(istri, 1, { opacity: 0, left: "+=40" }, .2, "-=1.5")
-      .fromTo(profileHeader, 1, { opacity: 0, top: -50 }, { opacity: 1, top: 0 }, "-=1.5")
-      .fromTo(info, 1, { opacity: 0, top: 70 }, { opacity: 1, top: 0 }, "-=1.5")
-  }
-
-  componentWillMount() {
-    document.title = document.title.replace(/\|.*/, '| About Us');
+  getData() {
     firebaseDB.ref('/couple').on('value', snapshot => {
       let couple = snapshot.val();
       this.setState({
@@ -71,6 +59,32 @@ export default class About extends Component {
         info: couple.info
       })
     });
+  }
+
+  animate() {
+    let screenWidth = document.body.scrollWidth;
+    let profileHeader = document.getElementsByClassName('profile-header');
+    let suami = document.getElementsByClassName('suami');
+    let istri = document.getElementsByClassName('istri');
+    let info = document.getElementsByClassName('couple-info');
+    let staggerPropsSuami = screenWidth < 400 ? { opacity: 0, top: "+=40" } : { opacity: 0, left: "-=40" };
+    let staggerPropsIstri = screenWidth < 400 ? { opacity: 0, top: "-=40" } : { opacity: 0, left: "+=40" };
+    this.tl.staggerFrom(suami, 1, staggerPropsSuami, .2)
+      .staggerFrom(istri, 1, staggerPropsIstri, .2, "-=1.5")
+      .fromTo(profileHeader, 1, { opacity: 0, top: -50 }, { opacity: 1, top: 0 }, "-=1.5")
+      .fromTo(info, 1, { opacity: 0, top: 70 }, { opacity: 1, top: 0 }, "-=1.5")
+  }
+
+  componentDidUpdate() {
+    this.animate();
+  }
+
+  componentDidMount() {
+    this.getData();
+  }
+
+  componentWillMount() {
+    document.title = document.title.replace(/\|.*/, '| About Us');
   }
 
   render() {

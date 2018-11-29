@@ -104,7 +104,6 @@ export default class Home extends Component {
       let suami = snapshots.child('couple/suami/firstName').val();
       let istri = snapshots.child('couple/istri/lastName').val();
       let eventDate = new Date(mainDate).getTime();
-      console.log(eventDate, mainDate, new Date(mainDate));
       this.setState({
         eventDate,
         suami,
