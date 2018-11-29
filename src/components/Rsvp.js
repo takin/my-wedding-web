@@ -145,13 +145,11 @@ export default class Rsvp extends Component {
       return <ShowQRCode url={QRurl} />
     }
 
-    return (
+    return loading ? <Loading /> : (
       <div className="rsvp-container">
         <div className="rsvp-header">Kindly Fill The Form</div>
         <div className="rsvp-body">
-          {
-            loading ? <Loading /> : <Form changeHandler={this.handleChange.bind(this)} submitHandler={this.handleSubmit.bind(this)} />
-          }
+          <Form changeHandler={this.handleChange.bind(this)} submitHandler={this.handleSubmit.bind(this)} />
         </div>
         <div className="rejected-message">{this.state.message}</div>
       </div>
