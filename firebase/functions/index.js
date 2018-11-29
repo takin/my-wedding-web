@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const config = require('../../src/app.config');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -10,7 +11,7 @@ const admin = require('firebase-admin');
 
 const app = admin.initializeApp({
   credential: admin.credential.applicationDefault(),
-  databaseURL: 'https://sm-bm-wedding.firebaseio.com'
+  databaseURL: config.firebaseConfig.databaseURL
 })
 
 exports.validateqr = functions.https.onRequest((req, res) => {

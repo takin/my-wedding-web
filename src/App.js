@@ -9,18 +9,10 @@ import Rsvp from './components/Rsvp';
 import Menu from './components/Menu';
 import Ceremony from './components/Ceremony';
 import Maps from './components/Maps';
+import { firebaseConfig } from './app.config';
 import './App.css';
 
-const config = {
-  apiKey: "AIzaSyAXlLRpCVl2XBl1PEuB85RHW8WXjg50x4I",
-  authDomain: "sm-bm-wedding.firebaseapp.com",
-  databaseURL: "https://sm-bm-wedding.firebaseio.com",
-  projectId: "sm-bm-wedding",
-  storageBucket: "sm-bm-wedding.appspot.com",
-  messagingSenderId: "899347634314"
-};
-
-const firebaseApp = firebase.initializeApp(config);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
   render() {
