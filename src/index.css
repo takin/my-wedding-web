@@ -10,7 +10,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: rgb(255, 255, 255);
-  background:radial-gradient(rgba(30,30,30, 0.5), rgba(10,10,10,1)), radial-gradient(rgba(30,30,30, 0.5), rgba(30,30,30, 0.7), rgb(56, 6, 6)), url(sm-bm.JPG) no-repeat center center fixed;
+  /* background:radial-gradient(rgba(255,255,255, 0.85), rgb(255,255,255,1)), radial-gradient(rgba(255,255,255, 0.7), rgba(255,255,255, 0.8), rgb(255, 255, 255)), url(/static/media/sm-bm.e0b90c5b.JPG) no-repeat center center fixed; */
+  background:radial-gradient(rgba(10,10,10, 0.85),rgba(10,10,10, 0.95), rgba(10,10,10, 0.98),rgba(10,10,10,1)), url(sm-bm.JPG) no-repeat center center fixed;
   background-size: cover;
 }
 

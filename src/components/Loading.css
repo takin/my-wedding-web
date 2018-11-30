@@ -1,7 +1,6 @@
 .loading-container {
   display: flex;
   flex-direction: column;
-  width: 100px;
   align-items: center;
 }
 .loading-text {

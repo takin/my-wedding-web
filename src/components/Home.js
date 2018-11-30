@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Loading from './Loading';
 import { TimelineLite, TimelineMax } from 'gsap/all';
 import './Home.css';
-
 import { firebaseDB } from '../App'
 
 const Circle = forwardRef(({ number, text }, ref) => {
