@@ -17,12 +17,12 @@ input, button, textarea {
   position: relative;
 }
 input#nama {
-  width: 20vw;
+  width: 400px;
   font-size: 1vw;
   border-radius: 5px 0 0 0;
 }
 input#gelar {
-  width: 5vw;
+  width: 100px;
   font-size: 1vw;
   margin-right: 0;
   border-radius: 0 5px 0 0;
@@ -31,14 +31,14 @@ input#gelar {
   padding: 20px;
 }
 textarea {
-  width: 29.2vw;
+  width:560px;
   height: 100px;
   border-radius: 0 0 5px 5px;
   padding: 10px;
   font-size: 1vw;
 }
 button {
-  width: 30.6vw;
+  width: 580px;
   padding: 20px 0;
   border-radius: 5px;
   margin-top: 10px;

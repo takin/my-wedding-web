@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 .home-header-container {
-  font-size: 8.3vw;
+  font-size: 5.9vw;
   padding: 20px 0 80px 0;
   line-height: 50px;
   font-weight: 400;
@@ -35,7 +35,7 @@
 }
 .heart {
   color: rgba(241, 78, 149, 0.8);
-  font-size: 8vw;
+  font-size: 5.9vw;
 }
 .circle-number {
   font-family: "Righteous";
