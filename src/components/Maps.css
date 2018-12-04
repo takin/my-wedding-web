@@ -1,0 +1,14 @@
+a.link-button {
+  text-decoration: none;
+  background: rgb(185, 75, 100);
+  padding: 20px;
+}
+
+.map-image-container {
+  height: 400px;
+  overflow: hidden;
+}
+
+.map-image-container img {
+  object-fit: scale-down;
+}
