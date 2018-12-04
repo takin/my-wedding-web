@@ -28,46 +28,44 @@ const Card = forwardRef((props, ref) => {
 })
 
 export default class Ceremony extends Component {
-  constructor(props) {
-    super(props)
-    this.tm = new TimelineMax()
-    this.state = {
-      ready: false,
-      items: {
-        left: {
-          title: null,
-          body: null,
-          eventDate: {
-            date: null,
-            month: null
-          },
-          eventTime: {
-            start: null,
-            end: null
-          }
+  tm = new TimelineMax()
+  state = {
+    ready: false,
+    items: {
+      left: {
+        title: null,
+        body: null,
+        eventDate: {
+          date: null,
+          month: null
         },
-        right: {
-          title: null,
-          body: null,
-          eventDate: {
-            date: null,
-            month: null
-          },
-          eventTime: {
-            start: null,
-            end: null
-          }
+        eventTime: {
+          start: null,
+          end: null
+        }
+      },
+      right: {
+        title: null,
+        body: null,
+        eventDate: {
+          date: null,
+          month: null
+        },
+        eventTime: {
+          start: null,
+          end: null
         }
       }
     }
-    this.element = {
-      pageTitle: "",
-      card: {
-        left: null,
-        right: null
-      }
+  }
+  element = {
+    pageTitle: "",
+    card: {
+      left: null,
+      right: null
     }
   }
+
   componentWillUnmount() {
     this.tm.kill();
   }
@@ -87,7 +85,7 @@ export default class Ceremony extends Component {
   }
 
   componentDidMount() {
-    firebaseDB.ref('/event').once('value').then(snapshots => {
+    firebaseDB.ref('/event/info').once('value').then(snapshots => {
       let leftItem = snapshots.child('0').val();
       let rightItem = snapshots.child('1').val();
       let leftDate = DateConverter(leftItem.date).id();

@@ -16,7 +16,7 @@ export default class Router extends Component {
       <ReactRouter>
         <Route render={({ location }) => (
           <div className="container">
-            {online ? <Menu /> : ""}
+            {online && <Menu />}
             <div className="main-body-container">
               <Switch location={location}>
                 <Route exact path="/" render={_ => online ? <Home /> : <Redirect to="/soon" />} />

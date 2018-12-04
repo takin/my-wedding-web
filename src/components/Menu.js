@@ -4,38 +4,36 @@ import { TimelineLite } from 'gsap/all';
 import './Menu.css';
 
 export default class Menu extends Component {
-  constructor(props) {
-    super(props);
-    this.tl = new TimelineLite();
-    this.state = {
-      menus: [
-        {
-          name: 'Home',
-          path: '/',
-        },
-        {
-          name: 'About Us',
-          path: 'about',
-        },
-        {
-          name: 'Gallery',
-          path: 'gallery',
-        },
-        {
-          name: 'Ceremony',
-          path: 'ceremony',
-        },
-        {
-          name: 'RSVP',
-          path: 'rsvp',
-        },
-        {
-          name: 'Location',
-          path: 'map',
-        }
-      ]
-    }
+  tl = new TimelineLite();
+  state = {
+    menus: [
+      {
+        name: 'Home',
+        path: '/',
+      },
+      {
+        name: 'About Us',
+        path: 'about',
+      },
+      {
+        name: 'Gallery',
+        path: 'gallery',
+      },
+      {
+        name: 'Ceremony',
+        path: 'ceremony',
+      },
+      {
+        name: 'RSVP',
+        path: 'rsvp',
+      },
+      {
+        name: 'Location',
+        path: 'map',
+      }
+    ]
   }
+
   componentDidMount() {
     let title = document.getElementsByClassName('menu-left-title-container')
     let menus = document.getElementsByTagName('li')

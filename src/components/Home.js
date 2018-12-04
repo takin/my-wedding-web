@@ -76,30 +76,27 @@ const Marriage = forwardRef(({ hasMarriage, event: { hari, jam, menit, detik } }
 })
 
 export default class Home extends Component {
-  constructor(props) {
-    super(props);
-    this.countdownElement = null;
-    this.animationTimeout = null;
-    this.animationState = 0; // 0 = not started, 1 = started, 2 = completed
-    this.tl = new TimelineLite();
-    this.state = {
-      ready: false,
-      suami: 'Syamsul',
-      istri: 'Marlina',
-      hasMarriage: false,
-      eventDate: null,
-      counter: {
-        hari: 0,
-        jam: 0,
-        menit: 0,
-        detik: 0
-      }
+  countdownElement = null;
+  animationTimeout = null;
+  animationState = 0; // 0 = not started, 1 = started, 2 = completed
+  tl = new TimelineLite();
+  state = {
+    ready: false,
+    suami: 'Syamsul',
+    istri: 'Marlina',
+    hasMarriage: false,
+    eventDate: null,
+    counter: {
+      hari: 0,
+      jam: 0,
+      menit: 0,
+      detik: 0
     }
   }
 
   getData() {
     firebaseDB.ref('/').on('value', snapshots => {
-      let mainDate = snapshots.child('event/0/date').val();
+      let mainDate = snapshots.child('event/info/0/date').val();
       let suami = snapshots.child('couple/suami/firstName').val();
       let istri = snapshots.child('couple/istri/lastName').val();
       let eventDate = new Date(mainDate).getTime();

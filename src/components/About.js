@@ -22,23 +22,20 @@ const Profile = (props, ref) => {
 };
 
 export default class About extends Component {
-  constructor(props) {
-    super(props);
-    this.tl = new TimelineLite();
-    this.state = {
-      ready: false,
-      suami: {
-        name: null,
-        picture: null,
-        desc: null
-      },
-      istri: {
-        name: null,
-        picture: null,
-        desc: null
-      },
-      info: null
-    }
+  tl = new TimelineLite();
+  state = {
+    ready: false,
+    suami: {
+      name: null,
+      picture: null,
+      desc: null
+    },
+    istri: {
+      name: null,
+      picture: null,
+      desc: null
+    },
+    info: null
   }
 
   getData() {

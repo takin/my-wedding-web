@@ -7,13 +7,10 @@ import "react-image-gallery/styles/css/image-gallery.css";
 import './Gallery.css';
 
 export default class Gallery extends Component {
-  constructor(props) {
-    super(props);
-    this.tl = new TimelineLite();
-    this.state = {
-      ready: false,
-      images: []
-    }
+  tl = new TimelineLite();
+  state = {
+    ready: false,
+    images: []
   }
 
   getData() {
@@ -50,12 +47,13 @@ export default class Gallery extends Component {
       <div className="gallery-main-container">
         <div className="gallery-title">Our Wedding Gallery</div>
         <div className="gallery-container">
-          <ImageGallery
+          {this.state.images.length > 0 && <ImageGallery
             lazyLoad={true}
             autoPlay={true}
             showThumbnails={false}
             items={this.state.images}
-          />
+          />}
+          {this.state.images.length <= 0 && <div style={{ textAlign: 'center' }}>No Images Yet.</div>}
         </div>
       </div>
     ) : <Loading />

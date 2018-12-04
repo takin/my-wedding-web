@@ -46,18 +46,15 @@ const ShowQRCode = props => (
 
 export default class Rsvp extends Component {
 
-  constructor(props) {
-    super(props);
-    this.tl = new TimelineLite();
-    this.state = {
-      QRurl: localStorage.getItem('qrurl') || null,
-      message: null,
-      loading: false,
-      submitted: false,
-      nama: null,
-      gelar: null,
-      alamat: null
-    }
+  tl = new TimelineLite();
+  state = {
+    QRurl: localStorage.getItem('qrurl') || null,
+    message: null,
+    loading: false,
+    submitted: false,
+    nama: null,
+    gelar: null,
+    alamat: null
   }
 
   handleChange(e) {
