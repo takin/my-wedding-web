@@ -24,7 +24,7 @@ export default class Router extends Component {
                 <Route path="/rsvp" render={_ => online ? <Rsvp /> : <Redirect to="/soon" />} />
                 <Route path="/ceremony" render={_ => online ? <Ceremony /> : <Redirect to="/soon" />} />
                 <Route path="/about" render={_ => online ? <About /> : <Redirect to="/soon" />} />
-                <Route path="/map" render={_ => true ? <Maps /> : <Redirect to="/soon" />} />
+                <Route path="/map" render={_ => online ? <Maps /> : <Redirect to="/soon" />} />
                 <Route path="/soon" render={_ => online ? <Redirect to="/" /> : (
                   <div className="container">
                     <div className="main-body-container">

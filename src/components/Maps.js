@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Loading from './Loading';
 import './Maps.css';
 import { firebaseDB } from '../App';
+import { TimelineLite } from 'gsap/all';
 
 const LinkButton = props => (
   <a href={props.url} target="_blank" className="link-button" rel="noopener noreferrer">{props.linkText}</a>
@@ -9,6 +10,7 @@ const LinkButton = props => (
 
 export default class Maps extends Component {
 
+  tl = new TimelineLite();
   state = {
     user: {
       available: false,
@@ -61,7 +63,7 @@ export default class Maps extends Component {
           longitude
         }
       })
-    }, _ => {
+    }, err => {
       this.setState({
         event: {
           available: false
@@ -69,16 +71,24 @@ export default class Maps extends Component {
       })
     })
   }
+
+  componentDidUpdate() {
+    let header = document.getElementsByClassName('page-title');
+    let image = document.getElementsByClassName('map-image-container');
+    let button = document.getElementsByClassName('button-continer');
+    this.tl.from(header, 1, { opacity: 0, top: -50 });
+  }
+
   render() {
     let { locationButtonPressed, user, event } = this.state
     if (locationButtonPressed) {
       return (
         <div style={{ flexDirection: 'column', alignItems: 'center' }}>
-          <div>Our Wedding Location</div>
+          <div className="page-title">Our Wedding Location</div>
           <div className="map-image-container">
             <img src="images/map.png" alt="Peta Lokasi" />
           </div>
-          <div>
+          <div className="button-container">
             {
               user.latitude !== null &&
               user.longitude !== null &&
@@ -89,9 +99,7 @@ export default class Maps extends Component {
             {
               user.latitude === null &&
               user.longitude === null &&
-              event.latitude !== null &&
-              event.longitude !== null &&
-              <LinkButton url={`https://www.google.com/maps/${event.latitude},${event.longitude}`} linkText="Lihat di Google Maps" />
+              <LinkButton url={`https://www.google.com/maps/place/Masjid+Nurul+Huda+Bangket+lauq/@-8.6049778,116.4538586,17.87z/data=!4m5!3m4!1s0x2dcc4be68813fc7b:0x83c8e47d4ac4daed!8m2!3d-8.6048364!4d116.4542996`} linkText="Lihat di Google Maps" />
             }
           </div>
         </div>
@@ -99,9 +107,9 @@ export default class Maps extends Component {
     }
 
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-        <div>Tips</div>
-        <div>
+      <div className="map-loading-container">
+        <div className="tips-header">Tips</div>
+        <div className="tips-body">
           Izinkan browser untuk mengakses lokasi Anda untuk dapat menggunakan fitur navigasi
           </div>
         <Loading />

@@ -1,7 +1,10 @@
 a.link-button {
   text-decoration: none;
-  background: rgb(185, 75, 100);
+  background: rgba(241, 78, 149, 0.95);
   padding: 20px;
+  color: rgb(255, 255, 255);
+  border-radius: 30px;
+  box-shadow: 1px 3px 5px
 }
 
 .map-image-container {
@@ -11,4 +14,47 @@ a.link-button {
 
 .map-image-container img {
   object-fit: scale-down;
+}
+.page-title {
+  font-family: "Sacramento";
+  display:block;
+  font-size: 5vw;
+  font-weight: 400;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.tips-body {
+    margin-bottom: -50px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgb(100,150,100);
+  }
+.tips-header {
+    font-weight: bold;
+    font-size: 20px;
+  }
+.map-loading-container {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+@media(max-width:414px) {
+  .map-loading-container {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .tips-body {
+    margin-bottom: -50px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    background: rgb(100,150,100);
+  }
 }
