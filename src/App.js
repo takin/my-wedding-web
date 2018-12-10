@@ -9,16 +9,18 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
   state = {
-    online: false
+    isOnline: false,
+    isConnected: false
   }
   componentDidMount() {
     firebaseApp.database().ref('/online').on('value', snap => {
-      this.setState({ online: snap.val() })
+      let isConnected = navigator && navigator.onLine;
+      this.setState({ isOnline: snap.val(), isConnected })
     })
   }
   render() {
     return (
-      <Router appState={this.state.online} />
+      <Router {...this.state} />
     )
   }
 }

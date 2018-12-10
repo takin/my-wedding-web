@@ -15,7 +15,7 @@ export default class Gallery extends Component {
 
   getData() {
     firebaseDB.ref('/gallery').on('value', snapshots => {
-      let images = snapshots.val();
+      let images = snapshots.val() || [];
       this.setState({ images, ready: true });
     })
   }

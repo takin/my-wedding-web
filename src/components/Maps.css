@@ -11,7 +11,9 @@ a.link-button {
   height: 400px;
   overflow: hidden;
 }
-
+.button-container, .map-image-container {
+  position: relative;
+}
 .map-image-container img {
   object-fit: scale-down;
 }
@@ -43,6 +45,13 @@ a.link-button {
     align-items: center;
   }
 @media(max-width:414px) {
+  .page-title {
+    font-size: 10vw;
+  }
+  .map-image-container {
+    width: 360px;
+    overflow: scroll;
+  }
   .map-loading-container {
     margin-top: 40px;
     text-align: center;

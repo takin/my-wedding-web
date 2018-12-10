@@ -11,21 +11,21 @@ import Loading from './components/Loading';
 
 export default class Router extends Component {
   render() {
-    let online = this.props.appState;
+    let { isConnected, isOnline } = this.props;
     return (
       <ReactRouter>
         <Route render={({ location }) => (
           <div className="container">
-            {online && <Menu />}
+            {(isOnline || !isConnected) && <Menu />}
             <div className="main-body-container">
               <Switch location={location}>
-                <Route exact path="/" render={_ => online ? <Home /> : <Redirect to="/soon" />} />
-                <Route path="/gallery" render={_ => online ? <Gallery /> : <Redirect to="/soon" />} />
-                <Route path="/rsvp" render={_ => online ? <Rsvp /> : <Redirect to="/soon" />} />
-                <Route path="/ceremony" render={_ => online ? <Ceremony /> : <Redirect to="/soon" />} />
-                <Route path="/about" render={_ => online ? <About /> : <Redirect to="/soon" />} />
-                <Route path="/map" render={_ => online ? <Maps /> : <Redirect to="/soon" />} />
-                <Route path="/soon" render={_ => online ? <Redirect to="/" /> : (
+                <Route exact path="/" render={_ => isOnline || !isConnected ? <Home /> : <Redirect to="/soon" />} />
+                <Route path="/gallery" render={_ => isOnline || !isConnected ? <Gallery /> : <Redirect to="/soon" />} />
+                <Route path="/rsvp" render={_ => isOnline || !isConnected ? <Rsvp /> : <Redirect to="/soon" />} />
+                <Route path="/ceremony" render={_ => isOnline || !isConnected ? <Ceremony /> : <Redirect to="/soon" />} />
+                <Route path="/about" render={_ => isOnline || !isConnected ? <About /> : <Redirect to="/soon" />} />
+                <Route path="/map" render={_ => isOnline || !isConnected ? <Maps /> : <Redirect to="/soon" />} />
+                <Route path="/soon" render={_ => isOnline || !isConnected ? <Redirect to="/" /> : (
                   <div className="container">
                     <div className="main-body-container">
                       <Loading text="Coming Soon..." />

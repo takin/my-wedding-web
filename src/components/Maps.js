@@ -75,8 +75,9 @@ export default class Maps extends Component {
   componentDidUpdate() {
     let header = document.getElementsByClassName('page-title');
     let image = document.getElementsByClassName('map-image-container');
-    let button = document.getElementsByClassName('button-continer');
-    this.tl.from(header, 1, { opacity: 0, top: -50 });
+    let button = document.getElementsByClassName('button-container');
+    this.tl.from(header, 1, { opacity: 0, top: -50 })
+      .staggerFrom([image, button], .6, { bottom: "-=50", opacity: 0 }, .2, "-=1")
   }
 
   render() {
